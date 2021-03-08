@@ -61,6 +61,7 @@ public class Hacha {
 	 * @throws java.io.IOException
 	 */
 	public void crearCortes() throws IOException {
+		/* Inicia algoritmo de compresion LZ4 */
 		InputStream in = Files.newInputStream(Paths.get(rutaOrigen + nombreArchivo));
 		OutputStream fout = Files.newOutputStream(Paths.get(rutaDestino + nombreArchivo + ".lz4"));
 		BufferedOutputStream out = new BufferedOutputStream(fout);
@@ -74,6 +75,7 @@ public class Hacha {
 		lzOut.close();
 		in.close();
 
+		/* Una vez que se comprimio, se le pasa la ruta para procesarla con Hacha */
 		Path pathArchivoOriginal = Paths.get(rutaDestino + nombreArchivo + ".lz4");
 
 		// El UMA se usa para definir el tamanio del buffer que obtendra datos del
